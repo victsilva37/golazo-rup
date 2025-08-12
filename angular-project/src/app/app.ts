@@ -1,10 +1,13 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { FiltroJugador } from './components/filtro-jugador/filtro-jugador';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, FiltroJugador],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css'],
 })
 export class App {
   protected readonly title = signal('angular-project');
