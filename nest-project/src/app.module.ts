@@ -3,6 +3,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppService } from './app.service';
 import 'dotenv/config';
 
+//JUGADOR
+import { JugadorModule } from './jugador/jugador.module';
+import { Jugador } from './jugador/jugador.entity';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -13,8 +17,9 @@ import 'dotenv/config';
       password: process.env.DB_PASSWORD,
       serviceName: process.env.DB_SERVICE_NAME,         // o el nombre de servicio (service name)
       synchronize: false, // No cambies a true en producción
-      entities: [],
+      entities: [Jugador],
     }),
+    JugadorModule
   ],
   providers: [AppService],
 })
