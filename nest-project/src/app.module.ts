@@ -7,6 +7,10 @@ import 'dotenv/config';
 import { JugadorModule } from './jugador/jugador.module';
 import { Jugador } from './jugador/jugador.entity';
 
+//CATEGORIA
+import { CategoriaModule } from './categoria/categoria.module';
+import { Categoria } from './categoria/categoria.entity';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -17,9 +21,10 @@ import { Jugador } from './jugador/jugador.entity';
       password: process.env.DB_PASSWORD,
       serviceName: process.env.DB_SERVICE_NAME,         // o el nombre de servicio (service name)
       synchronize: false, // No cambies a true en producción
-      entities: [Jugador],
+      entities: [Jugador, Categoria],
     }),
-    JugadorModule
+    JugadorModule,
+    CategoriaModule
   ],
   providers: [AppService],
 })
