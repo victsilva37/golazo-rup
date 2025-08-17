@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-
+import { Component, EventEmitter, Output } from '@angular/core';
 
 interface Jugador {
   id_jugador: number;
@@ -9,21 +8,25 @@ interface Jugador {
   foto_jugador: string;
 }
 
-
 @Component({
   selector: 'app-filtro-jugador',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './filtro-jugador.html',
-  styleUrl: './filtro-jugador.css'
+  styleUrls: ['./filtro-jugador.css']
 })
-
 export class FiltroJugador {
+
+  @Output() jugadorSeleccionado = new EventEmitter<Jugador>();
+
   jugadores: Jugador[] = [];
   jugadorMostrado: Jugador | null = null;
   intervalId: any;
-  cicloMax = 30; // cantidad de cambios rápidos
+  cicloMax = 30;
   cicloActual = 0;
+
+  // 🔒 se habilita solo cuando el panel confirma una asignación
+  filtrarHabilitado = false;
 
   constructor(private http: HttpClient) {}
 
@@ -32,34 +35,33 @@ export class FiltroJugador {
   }
 
   ngOnDestroy(): void {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
+    if (this.intervalId) clearInterval(this.intervalId);
+  }
+
+  habilitarFiltro() {
+    this.filtrarHabilitado = true;
+  }
+
+  private deshabilitarFiltro() {
+    this.filtrarHabilitado = false;
   }
 
   cargarJugadores() {
-  this.http.get<Jugador[]>(`http://localhost:3000/jugadores`).subscribe({
-    next: (data) => {
-      this.jugadores = data ?? [];  // Asegura que sea array
-      if (this.jugadores.length > 0) {
-        this.iniciarFiltro();
-      } else {
-        console.warn('No hay jugadores para filtrar');
-      }
-    },
-    error: (err) => {
-      console.error('Error cargando jugadores:', err);
-      this.jugadores = [];
-    }
-  });
-}
-
+    this.http.get<Jugador[]>('http://localhost:3000/jugadores').subscribe({
+      next: data => {
+        this.jugadores = data ?? [];
+        if (this.jugadores.length > 0) {
+          // Primer filtro automático
+          this.iniciarFiltro();
+        }
+      },
+      error: err => console.error('Error cargando jugadores:', err)
+    });
+  }
 
   iniciarFiltro() {
-    if (!this.jugadores || this.jugadores.length === 0) {
-      console.warn('No hay jugadores para iniciar filtro');
-      return;
-    }
+    if (!this.jugadores.length) return;
+    this.deshabilitarFiltro(); // se vuelve a deshabilitar hasta próxima asignación
 
     this.cicloActual = 0;
     this.intervalId = setInterval(() => {
@@ -69,9 +71,10 @@ export class FiltroJugador {
 
       if (this.cicloActual >= this.cicloMax) {
         clearInterval(this.intervalId);
-        console.log('Jugador seleccionado:', this.jugadorMostrado);
+        this.jugadorSeleccionado.emit(this.jugadorMostrado!);
       }
     }, 100);
-}
 
+    
+  }
 }

@@ -1,7 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { FiltroJugador } from './components/filtro-jugador/filtro-jugador';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FiltroJugador } from './components/filtro-jugador/filtro-jugador';
 import { PanelCategorias } from './components/panel-categorias/panel-categorias';
+
+interface Jugador {
+  id_jugador: number;
+  nombre_jugador: string;
+  foto_jugador: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -11,5 +17,5 @@ import { PanelCategorias } from './components/panel-categorias/panel-categorias'
   styleUrls: ['./app.css'],
 })
 export class App {
-  protected readonly title = signal('angular-project');
+  jugadorSeleccionado?: Jugador;
 }

@@ -1,8 +1,41 @@
 <div class="panel-categorias">
-  <h2>Listado de Categorías</h2>
-  <ul>
-    <li *ngFor="let cat of categorias">
-      {{ cat.nombre }}<span *ngIf="cat.multiplicador > 1"> X{{ cat.multiplicador }}</span>
-    </li>
-  </ul>
+
+  <!--SECCIÓN TÍTULO-->
+
+    <h2>Listado de Categorías</h2>
+
+  <!--LISTA DE CATEGORÍAS-->
+
+    <ul>
+
+      <h3>Goles: {{contadorGoles}} / {{meta}}</h3>
+      <li *ngFor="let cat of categorias">
+
+        <!--NOMBRE DE LA CATEGORÍA-->
+
+          {{ cat.nombre }}
+
+
+        <!--MULTIPLICADOR-->
+
+          <span *ngIf="cat.multiplicador > 1"> X{{ cat.multiplicador }}</span>
+
+
+        <!--BOTÓN ASIGNAR-->
+
+          <button 
+            (click)="asignarCategoria(cat)" 
+            [disabled]="cat.asignada || jugadorAsignado">
+            Asignar
+          </button>
+
+
+        <!--GOLES-->
+
+          <small *ngIf="cat.asignada && cat.jugador">
+              {{ cat.jugador.nombre_jugador }} | <strong>{{ cat.goles * cat.multiplicador }} goles</strong>
+          </small>
+
+      </li>
+    </ul>
 </div>

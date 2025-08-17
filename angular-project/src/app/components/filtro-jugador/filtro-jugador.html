@@ -1,6 +1,10 @@
 <div *ngIf="jugadorMostrado" class="jugador-filtro">
-  <img [src]="jugadorMostrado.foto_jugador" alt="{{ jugadorMostrado.nombre_jugador }}" width="200" height="200" style="border-radius: 50%;">
+  <img [src]="jugadorMostrado.foto_jugador"
+       alt="{{ jugadorMostrado.nombre_jugador }}"
+       width="200" height="200" style="border-radius: 50%;">
   <h2>{{ jugadorMostrado.nombre_jugador }}</h2>
 </div>
-<button (click)="iniciarFiltro()">Filtrar jugador</button>
 
+<button (click)="iniciarFiltro()" [disabled]="!filtrarHabilitado">
+  Filtrar jugador
+</button>

@@ -38,6 +38,7 @@ export class JugadorService implements OnModuleInit{
           id_jugador: data.id,
           nombre_jugador: data.name,
           foto_jugador: data.photo,
+          estadisticasGoles: []
         };
       }
       // Si no hay resultados, retorna null

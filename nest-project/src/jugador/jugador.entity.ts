@@ -1,5 +1,6 @@
 // jugador.entity.ts
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { EstadisticaGol } from 'src/estadistica_gol/estadistica_gol.entity';
+import { Entity, Column, PrimaryColumn, OneToMany } from 'typeorm';
 
 @Entity({ name: 'JUGADOR' })
 export class Jugador {
@@ -11,4 +12,7 @@ export class Jugador {
 
   @Column({ length: 255, nullable: true, name: 'FOTO_JUGADOR'})
   foto_jugador?: string; // URL foto jugador
+
+  @OneToMany(() => EstadisticaGol, estadistica => estadistica.categoria)
+  estadisticasGoles: EstadisticaGol[];
 }

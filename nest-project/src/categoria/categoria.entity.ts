@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { EstadisticaGol } from "src/estadistica_gol/estadistica_gol.entity";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 
 @Entity({name: 'CATEGORIA'})
 export class Categoria{
@@ -12,4 +13,6 @@ export class Categoria{
     @Column({name: 'MULTIPLICADOR'})
     multiplicador: number
     
+    @OneToMany(() => EstadisticaGol, estadistica => estadistica.jugador)
+    estadisticasGoles: EstadisticaGol[];
 }

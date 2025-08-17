@@ -11,11 +11,15 @@ export class CategoriaService {
   ) {}
 
   // Devuelve todas las categorías con nombre y multiplicador
-  async listarCategorias(): Promise<{ nombre: string; multiplicador: number }[]> {
-    const categorias = await this.categoriaRepository.find();
-    return categorias.map(c => ({
-      nombre: c.nombre,
-      multiplicador: c.multiplicador,
-    }));
+  // async listarCategorias(): Promise<{ nombre: string; multiplicador: number }[]> {
+  //   const categorias = await this.categoriaRepository.find();
+  //   return categorias.map(c => ({
+  //     nombre: c.nombre,
+  //     multiplicador: c.multiplicador,
+  //   }));
+  // }
+  // Devuelve todas las categorías con ID, nombre y multiplicador
+  async listarCategorias(): Promise<Categoria[]> {
+    return this.categoriaRepository.find();
   }
 }

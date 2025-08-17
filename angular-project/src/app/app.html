@@ -1,7 +1,11 @@
-<h1>Hola Rupa</h1>
+<h1>Golazo Rup</h1>
 
-<!--Component: FiltroJugador-->
-<app-filtro-jugador></app-filtro-jugador>
+<app-filtro-jugador
+  (jugadorSeleccionado)="jugadorSeleccionado = $event"
+  #filtroJugador>
+</app-filtro-jugador>
 
-<!--Component: PanelCategorias-->
-<app-panel-categorias></app-panel-categorias>
+<app-panel-categorias
+  [jugador]="jugadorSeleccionado"
+  (categoriaAsignada)="filtroJugador.habilitarFiltro()">
+</app-panel-categorias>

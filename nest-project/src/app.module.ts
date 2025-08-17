@@ -11,6 +11,10 @@ import { Jugador } from './jugador/jugador.entity';
 import { CategoriaModule } from './categoria/categoria.module';
 import { Categoria } from './categoria/categoria.entity';
 
+//ESTADISTICA_GOL
+import { EstadisticaGolModule } from './estadistica_gol/estadistica_gol.module';
+import { EstadisticaGol } from './estadistica_gol/estadistica_gol.entity';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -21,10 +25,11 @@ import { Categoria } from './categoria/categoria.entity';
       password: process.env.DB_PASSWORD,
       serviceName: process.env.DB_SERVICE_NAME,         // o el nombre de servicio (service name)
       synchronize: false, // No cambies a true en producción
-      entities: [Jugador, Categoria],
+      entities: [Jugador, Categoria, EstadisticaGol],
     }),
     JugadorModule,
-    CategoriaModule
+    CategoriaModule,
+    EstadisticaGolModule
   ],
   providers: [AppService],
 })
