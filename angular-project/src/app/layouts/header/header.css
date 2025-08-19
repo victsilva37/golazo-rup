@@ -1,0 +1,15 @@
+#menu-main-container{
+    background-color: rgb(145, 23, 156);
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+/*IMAGEN DE LA APLICACIÓN*/
+
+    #menu-main-container img{
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+    }

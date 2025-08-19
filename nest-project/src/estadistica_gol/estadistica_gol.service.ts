@@ -68,7 +68,42 @@ export class EstadisticaGolService {
       });
 
       for (const resp of data.response) {
+        // 🚫 EXCLUIR PORTEROS
+        if (resp.player?.position === 'Goalkeeper') {
+          continue; // saltar este jugador
+        }
+
         for (const stat of resp.statistics) {
+          // ----------------------------
+          // CASO ESPECIAL: Country
+          // ----------------------------
+          if (categoria.nombre === 'Country') {
+            if (
+              stat.league?.country === 'World' &&
+              ['Copa America', 'World Cup', 'UEFA Nations League', 'World Cup - Qualification South America', 'Friendlies']
+                .includes(stat.league?.name)
+            ) {
+              totalGoles += stat.goals?.total ?? 0;
+            }
+            continue; // no evaluar otros casos
+          }
+
+          // ----------------------------
+          // CASO ESPECIAL: Total Goals
+          // ----------------------------
+          if (categoria.nombre === 'Total Goals') {
+            if (
+              stat.league?.name !== 'Friendlies Clubs' &&
+              !stat.league?.name.includes('U21')
+            ) {
+              totalGoles += stat.goals?.total ?? 0;
+            }
+            continue;
+          }
+
+          // ----------------------------
+          // CASO GENERAL: demás categorías
+          // ----------------------------
           if (stat.league?.name?.toLowerCase().trim() === categoria.nombre.toLowerCase().trim()) {
             totalGoles += stat.goals?.total ?? 0;
           }

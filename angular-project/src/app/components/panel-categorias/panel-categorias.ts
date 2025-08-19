@@ -91,7 +91,7 @@ export class PanelCategorias implements OnInit, OnChanges {
             // ✅ Deshabilitar todos los demás botones de asignar
             this.jugadorAsignado = true;
 
-            this.contadorGoles++
+            this.contadorGoles = this.contadorGoles + golesUI
 
             if (this.contadorGoles >= this.meta){
               alert("HISTORIAAAAAAAAA")

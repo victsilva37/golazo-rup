@@ -1,0 +1,70 @@
+.panel-categorias{
+    background-color: rgb(71, 150, 214);
+    width: 100%;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+
+/*LISTA DE CATEGORÍAS*/
+
+    .panel-categorias ul h3{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align: end;
+        color: rgb(21, 255, 0);
+    }
+
+    .panel-categorias ul li{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /*CATEGORÍA*/
+
+        #categoria-content{
+            background-color: rgb(20, 140, 196);
+            width: 250px;
+            margin: 5px;
+            padding: 5px;
+        }
+            /*Nombre de la categoría*/
+            #categoria-content p{
+                font-size: 15px;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                color: rgb(10, 230, 83);
+            }
+
+
+    /*BOTÓN ASIGNAR*/
+
+        .panel-categorias ul li button{
+            width: 25px;
+            height: 25px;
+        }
+
+
+    /*GOLES*/
+
+        #goles-content{
+            background-color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 5px;
+        }
+
+        #goles-content img{
+            width: 30px;
+        }
+
+        /*Cantidad de goles del jugador seleccionado*/
+        #goles-content p{
+            font-size: 15px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            align-self: center;
+        }
+

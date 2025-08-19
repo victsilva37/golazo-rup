@@ -1,0 +1,41 @@
+#filtro-main #filtro-jugador-content{
+    background-color: rgb(71, 150, 214);
+    width: 100%;
+    height: 50%;
+    margin: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px; 
+}
+
+
+/*SECCIÓN FILTRO DE JUGADORES*/
+
+
+    /*SECCIÓN INFORMACIÓN DEL JUGADOR*/
+
+        /*Imagen del jugador*/
+        #filtro-main img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+
+        /*Nombre del jugador*/
+        #filtro-jugador-content h2{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: bisque;
+        }
+
+
+    /*SECCIÓN BOTÓN FILTRAR JUGADOR*/
+
+        /*Botón Filtrar Jugador*/
+        #filtro-jugador-content button{
+            width: 50%;
+            padding: 5px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }

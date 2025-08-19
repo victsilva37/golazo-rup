@@ -1,0 +1,19 @@
+main{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 1200px) {
+    main{
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+    
+    main app-filtro-jugador{
+        width: 85%;
+    }
+}

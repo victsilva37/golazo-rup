@@ -1,8 +1,5 @@
 <div class="panel-categorias">
 
-  <!--SECCIÓN TÍTULO-->
-
-    <h2>Listado de Categorías</h2>
 
   <!--LISTA DE CATEGORÍAS-->
 
@@ -11,30 +8,40 @@
       <h3>Goles: {{contadorGoles}} / {{meta}}</h3>
       <li *ngFor="let cat of categorias">
 
-        <!--NOMBRE DE LA CATEGORÍA-->
+        <!--CATEGORÍA-->
 
-          {{ cat.nombre }}
-
-
-        <!--MULTIPLICADOR-->
-
-          <span *ngIf="cat.multiplicador > 1"> X{{ cat.multiplicador }}</span>
+          <div id="categoria-content">
+              
+              <p>
+                <!--Nombre de la categoría-->
+                {{ cat.nombre }}
+                <!--Multiplicador-->
+                <strong *ngIf="cat.multiplicador > 1">X{{ cat.multiplicador }}</strong>
+              </p>
+              
+          </div>
+          
 
 
         <!--BOTÓN ASIGNAR-->
 
           <button 
             (click)="asignarCategoria(cat)" 
-            [disabled]="cat.asignada || jugadorAsignado">
-            Asignar
+            [disabled]="cat.asignada || jugadorAsignado"
+            class="btn btn-secondary">
           </button>
+
+  
 
 
         <!--GOLES-->
 
-          <small *ngIf="cat.asignada && cat.jugador">
-              {{ cat.jugador.nombre_jugador }} | <strong>{{ cat.goles * cat.multiplicador }} goles</strong>
-          </small>
+          <div id="goles-content" *ngIf="cat.asignada && cat.jugador">
+            <!--Foto de jugador seleccionado-->
+            <img [src]="cat.jugador.foto_jugador" alt="">
+            <!--Cantidad de goles del jugador seleccionado-->
+            <p><strong>{{ cat.goles * cat.multiplicador }} goles</strong></p>
+          </div>
 
       </li>
     </ul>

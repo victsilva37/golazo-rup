@@ -1,10 +1,25 @@
-<div *ngIf="jugadorMostrado" class="jugador-filtro">
-  <img [src]="jugadorMostrado.foto_jugador"
-       alt="{{ jugadorMostrado.nombre_jugador }}"
-       width="200" height="200" style="border-radius: 50%;">
-  <h2>{{ jugadorMostrado.nombre_jugador }}</h2>
+<div *ngIf="jugadorMostrado" id="filtro-main">
+
+  <!--SECCIÓN FILTRO DE JUGADORES-->
+
+    <div id="filtro-jugador-content">
+
+      <!--SECCIÓN INFORMACIÓN DEL JUGADOR-->
+
+        <!--Imagen del jugador-->
+        <img [src]="jugadorMostrado.foto_jugador" alt="{{ jugadorMostrado.nombre_jugador }}">
+        <!--Nombre del jugador-->
+        <h2>{{ jugadorMostrado.nombre_jugador }}</h2>
+        
+
+      <!--SECCIÓN BOTÓN FILTRAR JUGADOR-->
+
+        <button (click)="iniciarFiltro()"  [disabled]="!filtrarHabilitado" class="btn btn-primary">
+          Filtrar jugador
+        </button>
+
+    </div>
+
 </div>
 
-<button (click)="iniciarFiltro()" [disabled]="!filtrarHabilitado">
-  Filtrar jugador
-</button>
+
