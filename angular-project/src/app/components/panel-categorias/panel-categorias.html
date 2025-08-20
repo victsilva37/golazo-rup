@@ -5,6 +5,7 @@
 
     <ul>
 
+      <h3>2021 - 2023</h3>
       <h3>Goles: {{contadorGoles}} / {{meta}}</h3>
       <li *ngFor="let cat of categorias">
 
@@ -40,7 +41,7 @@
             <!--Foto de jugador seleccionado-->
             <img [src]="cat.jugador.foto_jugador" alt="">
             <!--Cantidad de goles del jugador seleccionado-->
-            <p><strong>{{ cat.goles * cat.multiplicador }} goles</strong></p>
+            <p><strong>{{ cat.goles }} goles</strong></p>
           </div>
 
       </li>

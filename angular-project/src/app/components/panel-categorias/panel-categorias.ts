@@ -77,7 +77,7 @@ export class PanelCategorias implements OnInit, OnChanges {
         ).subscribe({
           next: res => {
             // Actualiza visualmente
-            const golesUI = (res.goles ?? 0) * (cat.multiplicador ?? 1);
+            const golesUI = (res.goles ?? 0);
             Object.assign(cat, {
               asignada: true,
               goles: golesUI,
