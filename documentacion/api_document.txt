@@ -1,0 +1,4 @@
+Documentación de Endpoints del Backend  
+Generada con Postman  
+
+Link público: https://documenter.getpostman.com/view/23745776/2sB3BKGU1v 
